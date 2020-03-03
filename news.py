@@ -38,12 +38,12 @@ def send_msg(results):
         news += f"{i}. {each['title']} -> {each['link']}\n\n"
 
     # get login info from .json file
-    with open('C:\\Users\\WATNEY\\Desktop\\news-crawler\\config.json') as f:
+    with open('path-to-json-file') as f:
         user = json.load(f)
 
     # create message object
     message = MIMEText(news)
-    message['to'] = 'achuaphan@gmail.com'
+    message['to'] = '********@gmail.com'
     message['from'] = f'Info <{user["email"]}>'
     message['subject'] = 'COVID-19 News Update'
 
@@ -52,7 +52,7 @@ def send_msg(results):
         smtp.login(user['email'], user['password'])
         # smtp.send_message(msg, EMAIL_ADDR, EMAIL_ADDR)
         smtp.send_message(message)
-    print('Sent message successfully!')
+    print('Message sent successfully!')
 
 
 query = "coronavirus seattle"
